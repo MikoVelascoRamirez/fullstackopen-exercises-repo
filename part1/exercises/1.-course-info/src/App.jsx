@@ -18,7 +18,9 @@ const App = () => {
           { part: part3, exercises: exercises3 }
         ]
       }/>
-      <p>Number of exercises { exercises1 + exercises2 + exercises3 }</p>
+      <Total total = {
+        [exercises1, exercises2, exercises3]
+      }/>
     </div>
   )
 }
@@ -38,6 +40,16 @@ const Content = ({ content }) => {
       <p>{ content[2].part } { content[2].exercises }</p>
     </div>
   )
+}
+
+const Total = ({ total }) => {
+  const [exercises1, exercises2, exercises3] = total;
+
+  return (
+    <p>
+      Number of exercises { exercises1 + exercises2 + exercises3 }
+    </p>
+  );
 }
 
 export default App;
