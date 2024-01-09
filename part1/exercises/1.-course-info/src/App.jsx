@@ -35,10 +35,16 @@ const Content = ({ content }) => {
   
   return (
     <div>
-      <p>{ content[0].part } { content[0].exercises }</p>
-      <p>{ content[1].part } { content[1].exercises }</p>
-      <p>{ content[2].part } { content[2].exercises }</p>
+      <Part course = { content[0] }/>
+      <Part course = { content[1] }/>
+      <Part course = { content[2] }/>
     </div>
+  )
+}
+
+const Part = ({ course }) => {
+  return (
+    <p>{ course.part } { course.exercises }</p>
   )
 }
 
