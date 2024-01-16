@@ -1,6 +1,12 @@
 import React from 'react'
+import { useState } from 'react'
 
-function App() {
+const App = () => {
+
+  // Creating statistics states (for each opinion)
+  const [good, setGood] = useState(0);
+  const [neutral, setNeutral] = useState(0);
+  const [bad, setBad] = useState(0);
 
   return (
     <div>
