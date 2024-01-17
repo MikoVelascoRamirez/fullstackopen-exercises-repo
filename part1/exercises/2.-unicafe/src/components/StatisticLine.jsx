@@ -1,8 +1,8 @@
 import React from 'react'
 
-const StatisticLine = () => {
+const StatisticLine = ({text, value}) => {
   return (
-    <div>StatisticLine</div>
+    <p>{text} <span>{value}</span></p>
   )
 }
 
