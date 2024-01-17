@@ -51,7 +51,6 @@ const App = () => {
         <Button handleClick={handleBadOpinions} text="bad"/>
       </section>
 
-      <h2>Statistics</h2>
       <Statistics
         good={good}
         neutral={neutral}

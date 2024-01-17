@@ -5,14 +5,31 @@ const Statistics = ({ good, neutral, bad, total, average, positive }) => {
   if (total === 0) return <p>No feedback given</p>;
   else {
     return (
-      <section>
-        <StatisticLine text="good" value={good}/>
-        <StatisticLine text="neutral" value={neutral}/>
-        <StatisticLine text="bad" value={bad}/>
-        <StatisticLine text="all" value={total}/>
-        <StatisticLine text="average" value={average}/>
-        <StatisticLine text="positive" value={positive}/>
-      </section>
+      <table>
+        <thead>
+          <h2>Statistics</h2>
+        </thead>
+        <tbody>
+          <tr>
+            <StatisticLine text="good" value={good}/>
+          </tr>
+          <tr>
+            <StatisticLine text="neutral" value={neutral}/>
+          </tr>
+          <tr>
+            <StatisticLine text="bad" value={bad}/>
+          </tr>
+          <tr>
+            <StatisticLine text="all" value={total}/>
+          </tr>
+          <tr>
+            <StatisticLine text="average" value={average}/>
+          </tr>
+          <tr>
+            <StatisticLine text="positive" value={positive}/>
+          </tr>
+        </tbody>
+      </table>
     );
   }
 };
