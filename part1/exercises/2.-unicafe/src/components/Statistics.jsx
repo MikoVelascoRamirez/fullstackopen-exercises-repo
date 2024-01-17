@@ -6,9 +6,6 @@ const Statistics = ({ good, neutral, bad, total, average, positive }) => {
   else {
     return (
       <table>
-        <thead>
-          <h2>Statistics</h2>
-        </thead>
         <tbody>
           <tr>
             <StatisticLine text="good" value={good}/>
