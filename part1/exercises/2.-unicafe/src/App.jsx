@@ -20,13 +20,20 @@ const App = () => {
   }
 
   const handleNeutralOpinions = () => {
-    setNeutral(value => value + 1);
-    setTotal(value => value + 1);
+    const goodOpinions = good, badOpinions = bad;
+    const neutralOpinions = neutral + 1;
+    const totalOpinions = goodOpinions + neutralOpinions + badOpinions;
+    setNeutral(neutralOpinions);
+    setTotal(totalOpinions);
+    setAverage((goodOpinions-badOpinions) / totalOpinions);
   }
 
   const handleBadOpinions = () => {
-    setBad(value => value + 1);
-    setTotal(value => value + 1);
+    const badOpinions = bad + 1;
+    const totalOpinions = good + neutral + badOpinions;
+    setBad(badOpinions);
+    setTotal(totalOpinions);
+    setAverage((good-badOpinions) / totalOpinions);
   }
 
   return (
