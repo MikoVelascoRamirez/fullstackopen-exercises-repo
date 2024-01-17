@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import Statistics from './components/Statistics';
 
 const App = () => {
 
@@ -50,14 +51,14 @@ const App = () => {
       </section>
 
       <h2>Statistics</h2>
-      <section>
-        <p>good <span>{good}</span></p>
-        <p>neutral <span>{neutral}</span></p>
-        <p>bad <span>{bad}</span></p>
-        <p>all <span>{total}</span></p>
-        <p>average <span>{average}</span></p>
-        <p>positive <span>{positive}%</span></p>
-      </section>
+      <Statistics
+        good={good}
+        neutral={neutral}
+        bad={bad}
+        total={total}
+        average={average}
+        positive={positive}
+      />
     </div>
   )
 }
