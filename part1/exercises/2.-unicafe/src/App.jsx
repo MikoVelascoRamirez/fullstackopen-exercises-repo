@@ -9,6 +9,7 @@ const App = () => {
   const [bad, setBad] = useState(0);
   const [total, setTotal] = useState(0);
   const [average, setAverage] = useState(0);
+  const [positive, setPositive] = useState();
 
   //Event handlers for opinion buttons
   const handleGoodOpinions = () => {
@@ -17,6 +18,7 @@ const App = () => {
     setGood(goodOpinions);
     setTotal(totalOpinions);
     setAverage((goodOpinions-bad) / totalOpinions);
+    setPositive((goodOpinions/totalOpinions) * 100);
   }
 
   const handleNeutralOpinions = () => {
@@ -26,6 +28,7 @@ const App = () => {
     setNeutral(neutralOpinions);
     setTotal(totalOpinions);
     setAverage((goodOpinions-badOpinions) / totalOpinions);
+    setPositive((goodOpinions/totalOpinions) * 100);
   }
 
   const handleBadOpinions = () => {
@@ -34,6 +37,7 @@ const App = () => {
     setBad(badOpinions);
     setTotal(totalOpinions);
     setAverage((good-badOpinions) / totalOpinions);
+    setPositive((good/totalOpinions) * 100);
   }
 
   return (
@@ -52,7 +56,7 @@ const App = () => {
         <p>bad <span>{bad}</span></p>
         <p>all <span>{total}</span></p>
         <p>average <span>{average}</span></p>
-        <p>positive <span></span></p>
+        <p>positive <span>{positive}%</span></p>
       </section>
     </div>
   )
