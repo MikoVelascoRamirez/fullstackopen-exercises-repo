@@ -20,11 +20,13 @@ const App = () => {
   // Events handlers
 
   const showAnecdote = () => {
-    console.log(Math.floor(Math.random() * 8))
+    const indexAnecdote = Math.floor(Math.random() * 8);
+    setSelected(indexAnecdote);
   }
 
   return (
     <div>
+      <p>{anecdotes[selected]}</p>
       <button onClick={showAnecdote}>Show Random Anecdote</button>
     </div>
   )
