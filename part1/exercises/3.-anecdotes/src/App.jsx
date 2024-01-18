@@ -16,6 +16,9 @@ const App = () => {
 
   // State variables
   const [selected, setSelected] = useState(0);
+  const [points, setPoints] = useState({
+    0 : 0, 1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0, 7 : 0
+  })
 
   // Events handlers
 
