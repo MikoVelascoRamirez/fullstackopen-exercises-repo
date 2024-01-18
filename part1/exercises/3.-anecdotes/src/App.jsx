@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 const App = () => {
   
+  // Common variables
   const anecdotes = [
     'If it hurts, do it more often.',
     'Adding manpower to a late software project makes it later!',
@@ -13,11 +14,18 @@ const App = () => {
     'The only way to go fast, is to go well.'
   ]
 
+  // State variables
   const [selected, setSelected] = useState(0);
+
+  // Events handlers
+
+  const showAnecdote = () => {
+    console.log(Math.floor(Math.random() * 8))
+  }
 
   return (
     <div>
-      {anecdotes[selected]}
+      <button onClick={showAnecdote}>Show Random Anecdote</button>
     </div>
   )
 }
