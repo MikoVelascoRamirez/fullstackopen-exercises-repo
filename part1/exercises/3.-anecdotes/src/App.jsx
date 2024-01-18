@@ -27,6 +27,15 @@ const App = () => {
     setSelected(indexAnecdote);
   }
 
+  const registerVote = () => {
+    const anecdoteNumber = selected;
+    const copyPointsObj = {
+      ...points, 
+      [anecdoteNumber] : points[anecdoteNumber] += 1
+    };
+    setPoints(copyPointsObj);
+  }
+
   return (
     <div>
       <p>{anecdotes[selected]}</p>
