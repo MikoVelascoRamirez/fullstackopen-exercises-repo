@@ -35,6 +35,14 @@ const App = () => {
       [anecdoteNumber] : points[anecdoteNumber] += 1
     };
     setPoints(copyPointsObj);
+    setMostVotedAnecdote(getMostVoteAnecdote());
+  }
+
+  // Not-handling Functions
+  const getMostVoteAnecdote = () => {
+    const arrayOfPoints = Object.entries(points)
+    const [mostVotedIndex] = arrayOfPoints.sort((a,b) => b[1] - a[1])[0]
+    return mostVotedIndex;
   }
 
   return (
