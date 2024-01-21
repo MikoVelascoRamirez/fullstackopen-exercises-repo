@@ -47,10 +47,17 @@ const App = () => {
 
   return (
     <div>
-      <p>{anecdotes[selected]}</p>
-      <p>has {points[selected]} votes</p>
-      <button onClick={registerVote}>vote</button>
-      <button onClick={showAnecdote}>Show Random Anecdote</button>
+      <section>
+        <h1>Anecdote to the day</h1>
+        <p>{anecdotes[selected]}</p>
+        <p>has {points[selected]} votes</p>
+        <button onClick={registerVote}>vote</button>
+        <button onClick={showAnecdote}>Show Random Anecdote</button>
+      </section>
+      <section>
+        <h1>Anecdote with most votes</h1>
+        <p>{anecdotes[mostVotedAnecdote]} has {points[mostVotedAnecdote]} votes</p>
+      </section>
     </div>
   )
 }
