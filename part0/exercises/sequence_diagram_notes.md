@@ -8,6 +8,12 @@ sequenceDiagram;
     browser-->>server: POST: https://studies.cs.helsinki.fi/exampleapp/new_note
     Note right of browser: The client sends a new request adding a new note.
 
+    server-)browser: Status code 302
+    Note left of server: The server responses with a 302 status code, which causes a redirection to notes page.
+
+    browser-->>server: GET: https://studies.cs.helsinki.fi/exampleapp/notes
+    Note right of browser: The browser requests one more time the HTML document after redirection.
+
     server-)browser: HTML Document
     Note left of server: The server responses with a 302 status code, which causes a redirection to notes page loading a HTML document.
 
