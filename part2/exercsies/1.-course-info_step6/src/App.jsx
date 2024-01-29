@@ -85,12 +85,9 @@ const Course = ({course}) => {
   const Total = ({ total }) => {
     console.log(total)
     return (
-      <p>
-        Number of exercises{" "}
-        {
-          total.reduce((result, {exercises}) => result += exercises, 0)
-        }
-      </p>
+      <b>
+        Total of { total.reduce((result, {exercises}) => result += exercises, 0) } exercises
+      </b>
     );
   };
 
