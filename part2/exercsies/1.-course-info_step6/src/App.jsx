@@ -62,10 +62,13 @@ const Course = ({course}) => {
   };
 
   const Total = ({ total }) => {
+    console.log(total)
     return (
       <p>
         Number of exercises{" "}
-        {total[0].exercises + total[1].exercises + total[2].exercises}
+        {
+          total.reduce((result, {exercises}) => result += exercises, 0)
+        }
       </p>
     );
   };
