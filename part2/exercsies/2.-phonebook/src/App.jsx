@@ -8,6 +8,13 @@ const App = () => {
   ])
   const [newName, setNewName] = useState('')
 
+  //Handling functions
+  const addNumber = e => {
+    e.preventDefault();
+    setPersons(persons.concat({name: newName}))
+    setNewName('')
+  }
+
   return (
     <div>
       <h2>Phonebook</h2>
@@ -21,7 +28,7 @@ const App = () => {
           />
         </div>
         <div>
-          <button type="submit">add</button>
+          <button type="submit" onClick={addNumber}>add</button>
         </div>
       </form>
 
