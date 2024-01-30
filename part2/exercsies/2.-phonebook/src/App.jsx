@@ -50,7 +50,7 @@ const App = () => {
 
       <h2>Numbers</h2>
       <ul>
-        { persons.map(({name}) => <li key={name}>{name}</li>) }
+        { persons.map(({name, number}) => <li key={name}>{name} {number}</li>) }
       </ul>
       <div>debug: {newName}</div>
     </div>
