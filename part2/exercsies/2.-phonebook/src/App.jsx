@@ -27,8 +27,12 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      <div>
+        Filter shown with <input type="text" />
+      </div>
       <form action="">
         <div>
+          <h2>Add a new number</h2>
           name
           <input 
             type="text" 
