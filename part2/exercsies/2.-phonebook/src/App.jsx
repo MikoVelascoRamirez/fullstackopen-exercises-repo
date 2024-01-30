@@ -15,6 +15,8 @@ const App = () => {
     setNewName('')
   }
 
+  const handleNewNameChange = e => setNewName(e.target.value)
+
   return (
     <div>
       <h2>Phonebook</h2>
@@ -24,7 +26,7 @@ const App = () => {
           <input 
             type="text" 
             value={newName} 
-            onChange={e => setNewName(e.target.value)}
+            onChange={handleNewNameChange}
           />
         </div>
         <div>
