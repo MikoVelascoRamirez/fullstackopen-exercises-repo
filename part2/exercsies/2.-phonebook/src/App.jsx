@@ -13,7 +13,12 @@ const App = () => {
       <h2>Phonebook</h2>
       <form action="">
         <div>
-          name<input type="text" onChange={e => setNewName(e.target.value)}/>
+          name
+          <input 
+            type="text" 
+            value={newName} 
+            onChange={e => setNewName(e.target.value)}
+          />
         </div>
         <div>
           <button type="submit">add</button>
