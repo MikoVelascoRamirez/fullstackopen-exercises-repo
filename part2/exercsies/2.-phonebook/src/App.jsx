@@ -8,9 +8,13 @@ const App = () => {
   ])
   const [newName, setNewName] = useState('')
 
+  //Non-handling functions
+  const isTheNameExists = persons.some(({name}) => name === newName);
+  
   //Handling functions
   const addNumber = e => {
     e.preventDefault();
+    if(isTheNameExists) return alert(`${newName} is already added to phonebook`);
     setPersons(persons.concat({name: newName}))
     setNewName('')
   }
