@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 const App = () => {
 
+  //State variables
   const [persons, setPersons] = useState([
     { name: 'Arto Hellas' }
   ])
@@ -12,7 +13,7 @@ const App = () => {
       <h2>Phonebook</h2>
       <form action="">
         <div>
-          name<input type="text" />
+          name<input type="text" onChange={e => setNewName(e.target.value)}/>
         </div>
         <div>
           <button type="submit">add</button>
