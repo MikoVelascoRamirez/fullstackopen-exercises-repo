@@ -7,10 +7,11 @@ const App = () => {
     { name: 'Arto Hellas' }
   ])
   const [newName, setNewName] = useState('')
+  const [newPhone, setNewPhone] = useState('')
 
   //Non-handling functions
   const isTheNameExists = persons.some(({name}) => name === newName);
-  
+
   //Handling functions
   const addNumber = e => {
     e.preventDefault();
@@ -32,6 +33,13 @@ const App = () => {
             value={newName} 
             onChange={handleNewNameChange}
           />
+          <br/>
+          number
+          <input 
+            type="text" 
+            value={newPhone}
+            onChange={handleNewPhoneChange}
+            />
         </div>
         <div>
           <button type="submit" onClick={addNumber}>add</button>
