@@ -13,7 +13,7 @@ const App = () => {
   const isTheNameExists = persons.some(({name}) => name === newName);
 
   //Handling functions
-  const addNumber = e => {
+  const addNewContact = e => {
     e.preventDefault();
     if(isTheNameExists) return alert(`${newName} is already added to phonebook`);
     setPersons(persons.concat({name: newName}))
@@ -21,6 +21,7 @@ const App = () => {
   }
 
   const handleNewNameChange = e => setNewName(e.target.value)
+  const handleNewPhoneChange = e => setNewPhone(e.target.value)
 
   return (
     <div>
@@ -42,7 +43,7 @@ const App = () => {
             />
         </div>
         <div>
-          <button type="submit" onClick={addNumber}>add</button>
+          <button type="submit" onClick={addNewContact}>add</button>
         </div>
       </form>
 
