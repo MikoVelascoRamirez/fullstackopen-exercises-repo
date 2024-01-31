@@ -20,14 +20,23 @@ const App = () => {
     setNewPhone('')
   }
 
+  const filterPhoneBook = (searchTerm) => persons.filter(
+    person => !person.name.search(new RegExp(`^(${searchTerm})`, "i"))
+  )
+
   const handleNewNameChange = e => setNewName(e.target.value)
   const handleNewPhoneChange = e => setNewPhone(e.target.value)
+  const handleFilterSearchChange = e => {
+    // console.log(e.target.value)
+    // console.log(filterPhoneBook(e.target.value))
+    setFilteredList(filterPhoneBook(e.target.value));
+  }
 
   return (
     <div>
       <h2>Phonebook</h2>
       <div>
-        Filter shown with <input type="text" />
+        Filter shown with <input type="text" onChange={handleFilterSearchChange}/>
       </div>
       <form action="">
         <div>
