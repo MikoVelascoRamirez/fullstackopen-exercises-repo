@@ -64,9 +64,14 @@ const App = () => {
 
       <h2>Numbers</h2>
       <ul>
-        { persons.map(({name, number}) => <li key={name}>{name} {number}</li>) }
+        { filteredList.length 
+          ? filteredList.map(({name, number, id}) => {
+              return <li key={id}>{name} {number}</li>
+            })
+          : 'No results found' }
       </ul>
-      <div>debug: {newName}</div>
+      <div>debug name: {newName}</div>
+      <div>debug number: {newPhone}</div>      
     </div>
   )
 }
