@@ -3,11 +3,10 @@ import { useState } from 'react'
 const App = () => {
 
   //State variables
-  const [persons, setPersons] = useState([
-    { name: 'Arto Hellas' }
-  ])
+  const [persons, setPersons] = useState([])
   const [newName, setNewName] = useState('')
   const [newPhone, setNewPhone] = useState('')
+  const [filteredList, setFilteredList] = useState(persons);
 
   //Non-handling functions
   const isTheNameExists = persons.some(({name}) => name === newName);
