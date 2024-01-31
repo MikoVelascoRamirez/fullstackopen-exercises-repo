@@ -15,7 +15,9 @@ const App = () => {
   const addNewContact = e => {
     e.preventDefault();
     if(isTheNameExists) return alert(`${newName} is already added to phonebook`);
-    setPersons(persons.concat({name: newName, number: newPhone}))
+    const newContact = {name: newName, number: newPhone, id: persons.length+1};
+    setPersons([...persons, newContact])
+    setFilteredList([...persons, newContact])
     setNewName('')
     setNewPhone('')
   }
