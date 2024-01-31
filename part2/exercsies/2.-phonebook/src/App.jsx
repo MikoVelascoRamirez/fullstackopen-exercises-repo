@@ -64,11 +64,15 @@ const App = () => {
 
       <h2>Numbers</h2>
       <ul>
-        { filteredList.length 
-          ? filteredList.map(({name, number, id}) => {
-              return <li key={id}>{name} {number}</li>
-            })
-          : 'No results found' }
+        { 
+          !persons.length 
+            ? 'Phonebook empty'
+            : filteredList.length 
+              ? filteredList.map(({name, number, id}) => {
+                  return <li key={id}>{name} {number}</li>
+                })
+              : 'No results found' 
+        }
       </ul>
       <div>debug name: {newName}</div>
       <div>debug number: {newPhone}</div>      
