@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Filter from '../components/Filter'
 import PersonForm from '../components/PersonForm'
 import PersonsList from '../components/PersonsList'
@@ -10,7 +10,16 @@ const App = () => {
   const [persons, setPersons] = useState([])
   const [newName, setNewName] = useState('')
   const [newPhone, setNewPhone] = useState('')
-  const [filteredList, setFilteredList] = useState(persons);
+  const [filteredList, setFilteredList] = useState([]);
+
+  // Effect after component has been mounted after getting phonebook data from db.json
+  useEffect(() => {
+    axios('http://localhost:3001/persons')
+      .then(({data}) => {
+        setPersons(data)
+        setFilteredList(data)
+      })
+  }, [])
 
   //Non-handling functions
   const isTheNameExists = persons.some(({name}) => name === newName);
