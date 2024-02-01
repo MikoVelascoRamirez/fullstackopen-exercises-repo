@@ -37,30 +37,16 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <div>
-        Filter shown with <input type="text" onChange={handleFilterSearchChange}/>
-      </div>
-      <form action="">
-        <div>
-          <h2>Add a new number</h2>
-          name
-          <input 
-            type="text" 
-            value={newName} 
-            onChange={handleNewNameChange}
-          />
-          <br/>
-          number
-          <input 
-            type="text" 
-            value={newPhone}
-            onChange={handleNewPhoneChange}
-            />
-        </div>
-        <div>
-          <button type="submit" onClick={addNewContact}>add</button>
-        </div>
-      </form>
+      <Filter ev={handleFilterSearchChange}/>
+          
+      <h3>Add a new number</h3>
+      <PersonForm 
+        evName={handleNewNameChange} 
+        evNumber={handleNewPhoneChange} 
+        addContact={addNewContact}
+        nameVal={newName}
+        numVal={newPhone}
+      />
 
       <h2>Numbers</h2>
       <ul>
