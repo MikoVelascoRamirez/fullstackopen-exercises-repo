@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import Filter from '../components/Filter'
+import PersonForm from '../components/PersonForm'
+import PersonsList from '../components/PersonsList'
 
 const App = () => {
 
