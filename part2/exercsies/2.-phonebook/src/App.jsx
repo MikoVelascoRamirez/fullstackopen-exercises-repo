@@ -49,17 +49,12 @@ const App = () => {
       />
 
       <h2>Numbers</h2>
-      <ul>
-        { 
-          !persons.length 
-            ? 'Phonebook empty'
-            : filteredList.length 
-              ? filteredList.map(({name, number, id}) => {
-                  return <li key={id}>{name} {number}</li>
-                })
-              : 'No results found' 
-        }
-      </ul>
+      <PersonsList
+        personsLength={persons.length}
+        filteredList={filteredList}
+        filteredListLength={filteredList.length}
+      />
+
       <div>debug name: {newName}</div>
       <div>debug number: {newPhone}</div>      
     </div>
