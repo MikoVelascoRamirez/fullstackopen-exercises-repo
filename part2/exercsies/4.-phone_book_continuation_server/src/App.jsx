@@ -45,6 +45,23 @@ const App = () => {
     });
   };
 
+  const deleteContact = (id) => {
+    const msgToDelete = window.confirm("Are you sure want to delete this contact?");
+    // console.log("aaaaaa", id)
+    // console.log("response of confirm", msgToDelete)
+    if(msgToDelete) {
+      PhoneBook.deleteContact(id)
+        .then(response => {
+          if(response.statusText === 'OK'){
+            const personsList = [...persons].filter((person) => person.id !== id);
+            // console.log(persons, personsList)
+            setPersons(personsList)
+            setFilteredList(personsList)
+          }
+        })
+    }
+  }
+
   const filterPhoneBook = (searchTerm) =>
     persons.filter(
       (person) => !person.name.search(new RegExp(`^(${searchTerm})`, "i"))
@@ -75,6 +92,7 @@ const App = () => {
       <h2>Numbers</h2>
       <PersonsList
         personsLength={persons.length}
+        deleteContact={deleteContact}
         filteredList={filteredList}
         filteredListLength={filteredList.length}
       />

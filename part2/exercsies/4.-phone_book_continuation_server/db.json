@@ -26,9 +26,24 @@
       "number": "111-111-1111"
     },
     {
-      "id": "8a8a",
-      "name": "Bananita",
-      "number": "111-222-3333"
+      "id": "e306",
+      "name": "Félix Cuevas",
+      "number": "414-897-9999"
+    },
+    {
+      "id": "5c4d",
+      "name": "Harry \"El sucio\" Potter",
+      "number": "5465456546"
+    },
+    {
+      "id": "ccb3",
+      "name": "Payaso Trompita",
+      "number": "4545565665"
+    },
+    {
+      "id": "d981",
+      "name": "El Bananerosoyio",
+      "number": "12132323"
     }
   ]
 }

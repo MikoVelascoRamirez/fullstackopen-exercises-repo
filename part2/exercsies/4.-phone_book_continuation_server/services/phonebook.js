@@ -12,7 +12,13 @@ const getListOfContacts = () => {
     return request.then(response => response)
 }
 
+const deleteContact = id => {
+    const request = axios.delete(`${URL}/${id}`)
+    return request.then(response => response)
+}
+
 export default {
     addNewContact,
-    getListOfContacts
+    getListOfContacts,
+    deleteContact
 }

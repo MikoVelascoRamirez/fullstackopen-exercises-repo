@@ -1,6 +1,6 @@
 import React from "react";
 
-const PersonsList = ({personsLength, filteredList, filteredListLength}) => {
+const PersonsList = ({personsLength, deleteContact, filteredList, filteredListLength}) => {
   return (
     <ul>
       {!personsLength
@@ -10,6 +10,7 @@ const PersonsList = ({personsLength, filteredList, filteredListLength}) => {
             return (
               <li key={id}>
                 {name} {number}
+                <button id={id} onClick={() => deleteContact(id)}>delete</button>
               </li>
             );
           })
