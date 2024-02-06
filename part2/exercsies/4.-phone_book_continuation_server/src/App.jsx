@@ -1,70 +1,72 @@
-import { useState, useEffect } from 'react'
-import Filter from '../components/Filter'
-import PersonForm from '../components/PersonForm'
-import PersonsList from '../components/PersonsList'
-import axios from 'axios';
+import { useState, useEffect } from "react";
+import Filter from "../components/Filter";
+import PersonForm from "../components/PersonForm";
+import PersonsList from "../components/PersonsList";
+import PhoneBook from "../services/phonebook";
 
 const App = () => {
-
   //State variables
-  const [persons, setPersons] = useState([])
-  const [newName, setNewName] = useState('')
-  const [newPhone, setNewPhone] = useState('')
+  const [persons, setPersons] = useState([]);
+  const [newName, setNewName] = useState("");
+  const [newPhone, setNewPhone] = useState("");
   const [filteredList, setFilteredList] = useState([]);
 
   // Effect after component has been mounted after getting phonebook data from db.json
   useEffect(() => {
-    axios('http://localhost:3001/persons')
+    PhoneBook.getListOfContacts()
       .then(({data}) => {
-        setPersons(data)
-        setFilteredList(data)
+        console.log(data)
+        setPersons(data);
+        setFilteredList(data);
       })
-  }, [])
+  }, []);
 
   //Non-handling functions
-  const isTheNameExists = persons.some(({name}) => name === newName);
+  const isTheNameExists = persons.some(({ name }) => name === newName);
 
   //Handling functions
-  const addNewContact = e => {
+  const addNewContact = (e) => {
     e.preventDefault();
-    if(isTheNameExists) return alert(`${newName} is already added to phonebook`);
-    
+    if (isTheNameExists)
+      return alert(`${newName} is already added to phonebook`);
+
     const newContact = {
-      name: newName, 
-      number: newPhone
+      name: newName,
+      number: newPhone,
     };
 
-    axios
-      .post('http://localhost:3001/persons', newContact)
+    PhoneBook.addNewContact(newContact)
       .then(({data}) => {
-        setPersons([...persons, data])
-        setFilteredList([...persons, data])
-        setNewName('')
-        setNewPhone('')
-      })
-  }
+        console.log(data);
+        setPersons([...persons, data]);
+        setFilteredList([...persons, data]);
+        setNewName("");
+        setNewPhone("");
+    });
+  };
 
-  const filterPhoneBook = (searchTerm) => persons.filter(
-    person => !person.name.search(new RegExp(`^(${searchTerm})`, "i"))
-  )
+  const filterPhoneBook = (searchTerm) =>
+    persons.filter(
+      (person) => !person.name.search(new RegExp(`^(${searchTerm})`, "i"))
+    );
 
-  const handleNewNameChange = e => setNewName(e.target.value)
-  const handleNewPhoneChange = e => setNewPhone(e.target.value)
-  const handleFilterSearchChange = e => {
+  const handleNewNameChange = (e) => setNewName(e.target.value);
+  const handleNewPhoneChange = (e) => setNewPhone(e.target.value);
+  const handleFilterSearchChange = (e) => {
     // console.log(e.target.value)
     // console.log(filterPhoneBook(e.target.value))
     setFilteredList(filterPhoneBook(e.target.value));
-  }
+  };
 
   return (
     <div>
       <h2>Phonebook</h2>
-      <Filter ev={handleFilterSearchChange}/>
-          
+      <Filter ev={handleFilterSearchChange} />
+
       <h3>Add a new number</h3>
-      <PersonForm 
-        evName={handleNewNameChange} 
-        evNumber={handleNewPhoneChange} 
+      <PersonForm
+        evName={handleNewNameChange}
+        evNumber={handleNewPhoneChange}
         addContact={addNewContact}
         nameVal={newName}
         numVal={newPhone}
@@ -78,9 +80,9 @@ const App = () => {
       />
 
       <div>debug name: {newName}</div>
-      <div>debug number: {newPhone}</div>      
+      <div>debug number: {newPhone}</div>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
