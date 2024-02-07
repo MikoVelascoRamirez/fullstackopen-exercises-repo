@@ -27,8 +27,18 @@ const App = () => {
   //Handling functions
   const addNewContact = (e) => {
     e.preventDefault();
-    if (isTheNameExists)
-      return alert(`${newName} is already added to phonebook`);
+    console.log(isTheNameExists);
+    if (isTheNameExists !== undefined) {
+      const confirmResponse = confirm(
+        `${newName} is already added to phonebook, replace the old number with a new one?`
+      );
+
+      const objUpdated = { ...isTheNameExists, number: newPhone };
+      console.log(objUpdated);
+
+      if (confirmResponse) updateContact(objUpdated);
+      return;
+    }
 
     const newContact = {
       name: newName,
@@ -40,6 +50,21 @@ const App = () => {
         console.log(data);
         setPersons([...persons, data]);
         setFilteredList([...persons, data]);
+        setNewName("");
+        setNewPhone("");
+    });
+  };
+
+  const updateContact = (objToUpdate) => {
+    PhoneBook.updateContact(objToUpdate)
+      .then(({ data }) => {
+        const personsList = [...persons].map((person) => {
+          if (person.id === data.id) return data;
+          return person;
+        });
+        console.log(personsList);
+        setPersons(personsList);
+        setFilteredList(personsList);
         setNewName("");
         setNewPhone("");
     });

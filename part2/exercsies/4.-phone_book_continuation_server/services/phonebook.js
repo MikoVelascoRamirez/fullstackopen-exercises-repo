@@ -12,6 +12,12 @@ const getListOfContacts = () => {
     return request.then(response => response)
 }
 
+const updateContact = objUpdated => {
+    console.log(objUpdated)
+    const request = axios.put(`${URL}/${objUpdated.id}`, objUpdated);
+    return request.then(response => response)
+}
+
 const deleteContact = id => {
     const request = axios.delete(`${URL}/${id}`)
     return request.then(response => response)
@@ -20,5 +26,6 @@ const deleteContact = id => {
 export default {
     addNewContact,
     getListOfContacts,
-    deleteContact
+    deleteContact,
+    updateContact
 }
