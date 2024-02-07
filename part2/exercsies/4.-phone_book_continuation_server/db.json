@@ -2,7 +2,7 @@
   "persons": [
     {
       "name": "Arto Hellas",
-      "number": "158-988-7882",
+      "number": "158-988-7880",
       "id": "1"
     },
     {
@@ -59,16 +59,6 @@
       "id": "c876",
       "name": "Greta Thunbergas",
       "number": "55-9899-6371"
-    },
-    {
-      "id": "fa06",
-      "name": "Anonymous",
-      "number": "444-888-9990"
-    },
-    {
-      "id": "ed66",
-      "name": "Mostopapi",
-      "number": "121-314-3231-2"
     }
   ]
 }

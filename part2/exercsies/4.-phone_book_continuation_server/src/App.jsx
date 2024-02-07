@@ -4,7 +4,6 @@ import PersonForm from "../components/PersonForm";
 import PersonsList from "../components/PersonsList";
 import PhoneBook from "../services/phonebook";
 import Notification from "../components/Notification";
-import './index.css';
 
 const App = () => {
   //State variables
@@ -13,6 +12,7 @@ const App = () => {
   const [newPhone, setNewPhone] = useState("");
   const [filteredList, setFilteredList] = useState([]);
   const [message, setMessage] = useState(null);
+  const [colorNotification, setColorNotification] = useState('');
 
   // Effect after component has been mounted after getting phonebook data from db.json
   useEffect(() => {
@@ -113,7 +113,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <Notification message={message}/>
+      <Notification message={message} colorStyle={colorNotification}/>
       <Filter ev={handleFilterSearchChange} />
 
       <h3>Add a new number</h3>
