@@ -12,12 +12,12 @@ const App = () => {
   const [newName, setNewName] = useState("");
   const [newPhone, setNewPhone] = useState("");
   const [filteredList, setFilteredList] = useState([]);
+  const [message, setMessage] = useState(null);
 
   // Effect after component has been mounted after getting phonebook data from db.json
   useEffect(() => {
     PhoneBook.getListOfContacts()
       .then(({data}) => {
-        console.log(data)
         setPersons(data);
         setFilteredList(data);
       })
@@ -50,6 +50,10 @@ const App = () => {
     PhoneBook.addNewContact(newContact)
       .then(({data}) => {
         console.log(data);
+        setMessage(`${data.name} was added to the server`)
+        setTimeout(() => {
+          setMessage(null);
+        }, 3000);
         setPersons([...persons, data]);
         setFilteredList([...persons, data]);
         setNewName("");
