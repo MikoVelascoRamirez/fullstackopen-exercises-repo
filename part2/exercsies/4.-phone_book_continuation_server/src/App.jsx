@@ -22,7 +22,7 @@ const App = () => {
   }, []);
 
   //Non-handling functions
-  const isTheNameExists = persons.some(({ name }) => name === newName);
+  const isTheNameExists = persons.find(({ name }) => name === newName);
 
   //Handling functions
   const addNewContact = (e) => {
