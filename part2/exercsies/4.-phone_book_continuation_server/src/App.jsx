@@ -69,6 +69,10 @@ const App = () => {
           return person;
         });
         console.log(personsList);
+        setMessage(`${data.name}'s phone was updated.`)
+        setTimeout(() => {
+          setMessage(null);
+        }, 3000);
         setPersons(personsList);
         setFilteredList(personsList);
         setNewName("");
