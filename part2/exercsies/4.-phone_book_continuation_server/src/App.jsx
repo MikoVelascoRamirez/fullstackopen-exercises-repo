@@ -77,7 +77,15 @@ const App = () => {
         setFilteredList(personsList);
         setNewName("");
         setNewPhone("");
-    });
+    })
+      .catch(() => {
+        setColorNotification('red');
+        setMessage(`Information of ${objToUpdate.name} has already removed from server.`)
+        setTimeout(() => {
+          setMessage(null);
+          setColorNotification('')
+        }, 3000);
+      });
   };
 
   const deleteContact = (id) => {
