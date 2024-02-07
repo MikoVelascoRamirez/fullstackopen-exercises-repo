@@ -50,9 +50,11 @@ const App = () => {
     PhoneBook.addNewContact(newContact)
       .then(({data}) => {
         console.log(data);
+        setColorNotification('green');
         setMessage(`${data.name} was added to the server`)
         setTimeout(() => {
           setMessage(null);
+          setColorNotification('')
         }, 3000);
         setPersons([...persons, data]);
         setFilteredList([...persons, data]);
@@ -69,9 +71,11 @@ const App = () => {
           return person;
         });
         console.log(personsList);
+        setColorNotification('green');
         setMessage(`${data.name}'s phone was updated.`)
         setTimeout(() => {
           setMessage(null);
+          setColorNotification('')
         }, 3000);
         setPersons(personsList);
         setFilteredList(personsList);
