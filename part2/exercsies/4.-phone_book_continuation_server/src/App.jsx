@@ -3,6 +3,8 @@ import Filter from "../components/Filter";
 import PersonForm from "../components/PersonForm";
 import PersonsList from "../components/PersonsList";
 import PhoneBook from "../services/phonebook";
+import Notification from "../components/Notification";
+import './index.css';
 
 const App = () => {
   //State variables
@@ -103,6 +105,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      <Notification message={message}/>
       <Filter ev={handleFilterSearchChange} />
 
       <h3>Add a new number</h3>
