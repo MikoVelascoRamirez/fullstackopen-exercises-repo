@@ -1,12 +1,17 @@
 import { useState } from 'react'
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
 
   return (
-    <>
-      <p>OH YEAH!!!</p>
-    </>
+    <div>
+      <form>
+        <label htmlFor="inp_country">Find countries </label>
+        <input type="text" id="inp_country" />
+      </form>
+      <section>
+        <p>Too many matches, specify another filter</p>
+      </section>
+    </div>
   )
 }
 
