@@ -2,6 +2,9 @@ import { useState } from 'react'
 
 const App = () => {
 
+  const [country, setCountry] = useState("");
+  const [result, setResult] = useState(null);
+
   return (
     <div>
       <form>
