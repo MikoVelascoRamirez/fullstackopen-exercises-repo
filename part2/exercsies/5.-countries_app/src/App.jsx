@@ -3,7 +3,7 @@ import { useState } from 'react'
 const App = () => {
 
   const [country, setCountry] = useState("");
-  const [result, setResult] = useState(null);
+  const [listOfCountries, setListOfCountries] = useState(null);
 
   // Styate handling functions
   const handleNameCountry = e => {
