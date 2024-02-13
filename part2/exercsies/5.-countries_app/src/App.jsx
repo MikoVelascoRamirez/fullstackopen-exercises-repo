@@ -5,6 +5,19 @@ const App = () => {
   const [country, setCountry] = useState("");
   const [listOfCountries, setListOfCountries] = useState(null);
 
+  useEffect(() => {
+    axios
+      .get("https://studies.cs.helsinki.fi/restcountries/api/all")
+      .then((result) => {
+        const list = result.data.map(({ name, area }) => {
+          return {"name": name.common, area}
+        });
+        setListOfCountries(list);
+      });
+  }, []);
+
+  if (!listOfCountries) return null;
+
   // State handling functions
   const handleNameCountry = (e) => {
     setCountry(e.target.value);
