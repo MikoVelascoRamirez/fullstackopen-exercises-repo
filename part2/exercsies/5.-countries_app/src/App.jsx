@@ -9,8 +9,9 @@ const App = () => {
     axios
       .get("https://studies.cs.helsinki.fi/restcountries/api/all")
       .then((result) => {
-        const list = result.data.map(({ name, area }) => {
-          return {"name": name.common, area}
+        const list = result.data.map(({ name, area, cca2 }) => {
+          // console.log({"name": name.common, "key": `${cca2.toLowerCase()}_${area}`})
+          return {"name": name.common, "key_id": `${cca2.toLowerCase()}_${area}`}
         });
         setListOfCountries(list);
       });
