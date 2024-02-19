@@ -54,7 +54,17 @@ const App = () => {
     console.log("paintResults()", typeof result)
     if(typeof result === 'string') return <p>{result}</p>
     else if (Array.isArray(result))
-      return <ul>{result.map(({name, key_id}) => <li key={key_id}>{name}</li>)}</ul>
+      return <ul>
+              {
+                result.map(({name, key_id}) => {
+                  return (
+                    <li key={key_id}>
+                      {name} <button onClick={() => fetchCountry({name})}>show</button>
+                    </li>
+                  )
+                })
+              }
+            </ul>
     else if(result instanceof Object){
       return <div>
                 <h2>{onlyCountry.name}</h2>
@@ -79,6 +89,7 @@ const App = () => {
   };
 
   const fetchCountry = ({name}) => {
+    console.log(name)
     console.log("fetchCountry()")
     console.log("onlyCountry", onlyCountry)
     axios.get(`https://studies.cs.helsinki.fi/restcountries/api/name/${name}`)
