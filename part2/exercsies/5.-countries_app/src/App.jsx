@@ -26,8 +26,14 @@ const App = () => {
 
   if (!listOfCountries) return null;
 
+  // Not-handling functions
+  let resultSearchList = listOfCountries.filter(
+    (countryName) => !countryName.name.search(new RegExp(`.*${country}.*`, "gi"))
+  );
+
   // State handling functions
   const handleNameCountry = (e) => {
+    console.log("handleNameCountry()")
     setCountry(e.target.value);
   };
 
