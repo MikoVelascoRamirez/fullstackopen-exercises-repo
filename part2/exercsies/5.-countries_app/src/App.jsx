@@ -28,8 +28,8 @@ const App = () => {
     <div>
       <section>
         <label htmlFor="inp_country">Find countries </label>
-        <input type="text" id="inp_country" onChange={handleNameCountry} />
-      </section>      
+        <input type="text" id="inp_country" onChange={handleNameCountry} value={country}/>
+      </section>
       <section>
         <p>Too many matches, specify another filter</p>
       </section>
