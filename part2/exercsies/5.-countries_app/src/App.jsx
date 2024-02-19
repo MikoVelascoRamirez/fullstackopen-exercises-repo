@@ -56,6 +56,16 @@ const App = () => {
     setCountry(e.target.value);
   };
 
+  const fetchCountry = ({name}) => {
+    console.log("fetchCountry()")
+    console.log("onlyCountry", onlyCountry)
+    axios.get(`https://studies.cs.helsinki.fi/restcountries/api/name/${name}`)
+      .then(response => {        
+        const { capital, area, languages, flags } = response.data;
+        setOnlyCountry({ name, capital, area, languages, flags })
+      })
+  }
+
   return (
     <div>
       <section>
