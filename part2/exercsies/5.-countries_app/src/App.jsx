@@ -4,18 +4,25 @@ import axios from "axios";
 const App = () => {
   const [country, setCountry] = useState("");
   const [listOfCountries, setListOfCountries] = useState(null);
+  const [onlyCountry, setOnlyCountry] = useState(null);
 
   useEffect(() => {
+    console.log("effect")
+    if(!listOfCountries){
     axios
       .get("https://studies.cs.helsinki.fi/restcountries/api/all")
       .then((result) => {
         const list = result.data.map(({ name, area, cca2 }) => {
-          // console.log({"name": name.common, "key": `${cca2.toLowerCase()}_${area}`})
           return {"name": name.common, "key_id": `${cca2.toLowerCase()}_${area}`}
         });
         setListOfCountries(list);
       });
-  }, []);
+    }
+    else if(resultSearchList.length !== 1) {
+      console.log("seteando onlyCountry")
+      setOnlyCountry(null);
+    }
+  }, [country]);
 
   if (!listOfCountries) return null;
 
