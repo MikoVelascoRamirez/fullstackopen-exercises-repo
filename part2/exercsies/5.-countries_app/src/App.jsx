@@ -95,7 +95,11 @@ const App = () => {
         <input type="text" id="inp_country" onChange={handleNameCountry} value={country}/>
       </section>
       <section>
-        <p>Too many matches, specify another filter</p>
+        { 
+          !onlyCountry
+            ? getSearchResults(resultSearchList)
+            : paintResults(onlyCountry)
+        }
       </section>
     </div>
   );
