@@ -50,6 +50,28 @@ const App = () => {
     return paintResults(resultToPaint);
   };
 
+  const paintResults = result => {
+    console.log("paintResults()", typeof result)
+    if(typeof result === 'string') return <p>{result}</p>
+    else if (Array.isArray(result))
+      return <ul>{result.map(({name, key_id}) => <li key={key_id}>{name}</li>)}</ul>
+    else if(result instanceof Object){
+      return <div>
+                <h2>{onlyCountry.name}</h2>
+                <p>Capital: {onlyCountry.capital[0]}</p>
+                <p>Area: {onlyCountry.area}</p>
+                <h3>Languages:</h3>
+                <ul>
+                  {
+                    Object.entries( onlyCountry.languages )
+                    .map( lang => <li key={lang[0]}>{lang[1]}</li> )
+                  }
+                </ul>
+                <img alt={onlyCountry.flags.alt} src={onlyCountry.flags.png}/>
+              </div>
+    }
+  }
+
   // State handling functions
   const handleNameCountry = (e) => {
     console.log("handleNameCountry()")
