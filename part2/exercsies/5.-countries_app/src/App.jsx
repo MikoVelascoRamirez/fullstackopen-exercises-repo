@@ -31,6 +31,25 @@ const App = () => {
     (countryName) => !countryName.name.search(new RegExp(`.*${country}.*`, "gi"))
   );
 
+  const getSearchResults = resultSearch => {
+    console.log(resultSearch)
+    const resultLength = resultSearch.length;
+    let resultToPaint = "";
+    
+    if(resultLength === 1){
+      fetchCountry(resultSearch[0])
+    } else if(resultSearch.length > 1 && resultSearch.length < 10) {
+        resultToPaint = resultSearch;        
+    } else if(resultSearch.length >= 10 && resultSearch.length < 250)
+        resultToPaint = "Too many matches, specify another filter";        
+      else if (!resultSearch.length)
+        resultToPaint = "There are NO matches";
+      else
+        resultToPaint = "Please, input a term search";
+    
+    return paintResults(resultToPaint);
+  };
+
   // State handling functions
   const handleNameCountry = (e) => {
     console.log("handleNameCountry()")
