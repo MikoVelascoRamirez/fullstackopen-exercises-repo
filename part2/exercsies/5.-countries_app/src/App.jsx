@@ -68,7 +68,7 @@ const App = () => {
     else if(result instanceof Object){
       return <div>
                 <h2>{onlyCountry.name}</h2>
-                <p>Capital: {onlyCountry.capital[0]}</p>
+                <p>Capital: {onlyCountry.capital}</p>
                 <p>Area: {onlyCountry.area}</p>
                 <h3>Languages:</h3>
                 <ul>
