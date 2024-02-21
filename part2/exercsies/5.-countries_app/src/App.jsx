@@ -93,9 +93,29 @@ const App = () => {
     console.log("fetchCountry()")
     console.log("onlyCountry", onlyCountry)
     axios.get(`https://studies.cs.helsinki.fi/restcountries/api/name/${name}`)
-      .then(response => {        
-        const { capital, area, languages, flags } = response.data;
-        setOnlyCountry({ name, capital, area, languages, flags })
+      .then(({data}) => {
+        return {
+          name: data.name.common,
+          capital: data.capital[0],
+          area: data.area,
+          population: data.population,
+          languages: data.languages,
+          flags: data.flags          
+        };
+      })
+      .then(dataCountry => {
+        return axios
+        .get(
+          `https://api.openweathermap.org/data/2.5/weather?q=${dataCountry.capital}&appid=${import.meta.env.VITE_SOME_KEY}&units=metric`
+        )
+        .then((res) => {
+          setOnlyCountry({
+            ...dataCountry,
+            temperature: res.data.main.temp,
+            wind: res.data.wind.speed,
+            iconImage: res.data.weather[0].icon,
+          });
+        });
       })
   }
 
