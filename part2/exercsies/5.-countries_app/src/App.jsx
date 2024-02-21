@@ -78,6 +78,14 @@ const App = () => {
                   }
                 </ul>
                 <img alt={onlyCountry.flags.alt} src={onlyCountry.flags.png}/>
+
+                <h3>Weather in {onlyCountry.capital}</h3>
+                <p>Temperature: {onlyCountry.temperature} Celsius</p>
+                <img
+                  src={`https://openweathermap.org/img/wn/${onlyCountry.iconImage}@2x.png`}
+                  alt="weather"
+                />
+                <p>Wind speed: {onlyCountry.wind} m/s</p>
               </div>
     }
   }
