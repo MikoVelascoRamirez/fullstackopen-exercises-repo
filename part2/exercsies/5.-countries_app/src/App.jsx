@@ -104,7 +104,7 @@ const App = () => {
       .then(({data}) => {
         return {
           name: data.name.common,
-          capital: data.capital[0],
+          capital: data.capital[0].normalize('NFD').replace(/[\u0300-\u036f]/g,""),
           area: data.area,
           population: data.population,
           languages: data.languages,
@@ -122,7 +122,7 @@ const App = () => {
             temperature: res.data.main.temp,
             wind: res.data.wind.speed,
             iconImage: res.data.weather[0].icon,
-          });
+          });          
         });
       })
   }
