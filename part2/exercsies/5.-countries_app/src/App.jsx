@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import countriesService from "../services/countriesService";
+import Form from "../components/Form";
 
 const App = () => {
   const [country, setCountry] = useState("");
@@ -103,10 +104,9 @@ const App = () => {
 
   return (
     <div>
-      <section>
-        <label htmlFor="inp_country">Find countries </label>
-        <input type="text" id="inp_country" onChange={handleNameCountry} value={country}/>
-      </section>
+
+      <Form handlerName={handleNameCountry} country={country}/>
+      
       <section>
         { 
           !onlyCountry
