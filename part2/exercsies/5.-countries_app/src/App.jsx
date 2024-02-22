@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import countriesService from "../services/countriesService";
 
 const App = () => {
@@ -12,12 +11,7 @@ const App = () => {
     if(!listOfCountries){
       countriesService
         .getAllCountries()
-          .then(({data}) => {
-            const list = data.map(({ name, area, cca2 }) => (
-                {"name": name.common, "key_id": `${cca2.toLowerCase()}_${area}`}
-            ));
-            setListOfCountries(list)
-          })
+          .then((list) => setListOfCountries(list))
     }
     else if(resultSearchList.length !== 1) {
       console.log("seteando onlyCountry")
