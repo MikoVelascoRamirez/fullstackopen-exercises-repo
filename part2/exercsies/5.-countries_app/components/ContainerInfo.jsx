@@ -3,24 +3,23 @@ import Result from "./Result";
 
 const ContainerInfo = ({ country, resultList, getCountry }) => {
   const getSearchResults = (resultSearch) => {
-    console.log(resultSearch);
     const resultLength = resultSearch.length;
-    let resultToPaint = "";
+    let resultToPaint;
 
     if (resultLength === 1) {
       getCountry(resultSearch[0]);
-    } else if (resultSearch.length > 1 && resultSearch.length < 10) {
+    } else if (resultLength > 1 && resultLength < 10) {
       resultToPaint = resultSearch;
-    } else if (resultSearch.length >= 10 && resultSearch.length < 250)
-      resultToPaint = "Too many matches, specify another filter";
-    else if (!resultSearch.length) resultToPaint = "There are NO matches";
-    else resultToPaint = "Please, input a term search";
+    } else if (resultLength >= 10 && resultLength < 250)
+      resultToPaint = { msg: 'Too many matches, specify another filter', color: 'orange' }
+    else if (!resultLength) resultToPaint = { msg: 'There are NO matches', color: 'red'}
+    else resultToPaint = { msg: 'Please, input a term search', color: 'blue'};
     
     return resultToPaint;
   };
 
   return (
-    <section>
+    <section>      
       <Result
         result={country ?? getSearchResults(resultList)}
         getCountry={getCountry}
