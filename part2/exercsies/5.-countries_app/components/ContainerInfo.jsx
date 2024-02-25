@@ -22,7 +22,7 @@ const ContainerInfo = ({ country, resultList, getCountry }) => {
     <section>      
       <Result
         result={country ?? getSearchResults(resultList)}
-        getCountry={getCountry}
+        getCountryHandler={(resultList.length > 1 && resultList.length < 10) ? getCountry : null}
       />
     </section>
   );
