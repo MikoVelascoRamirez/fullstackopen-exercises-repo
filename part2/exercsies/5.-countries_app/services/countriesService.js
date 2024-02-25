@@ -7,12 +7,12 @@ const BASE_COUNTRIES_API_URL =
 const getAllCountries = () => {
   return axios
     .get(`${BASE_COUNTRIES_API_URL}/all`)
-    .then(({ data }) =>
+    .then(({ data }) =>    
       data.map(({ name, area, cca2 }) => ({
         name: name.common,
         key_id: `${cca2.toLowerCase()}_${area}`,
       }))
-    );
+    )
 };
 
 const getCountryBasicInfo = (name) => {

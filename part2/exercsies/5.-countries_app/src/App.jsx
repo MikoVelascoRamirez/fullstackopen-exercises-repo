@@ -2,26 +2,30 @@ import { useEffect, useState } from "react";
 import countriesService from "../services/countriesService";
 import Form from "../components/Form";
 import ContainerInfo from "../components/ContainerInfo";
+import Message from "../components/Message";
 
 const App = () => {
   const [country, setCountry] = useState("");
   const [listOfCountries, setListOfCountries] = useState(null);
   const [onlyCountry, setOnlyCountry] = useState(null);
+  const [displayMessage, setDisplayMessage] = useState("Fetching countries...");
 
   useEffect(() => {
-    console.log("effect")
     if(!listOfCountries){
       countriesService
         .getAllCountries()
-          .then((list) => setListOfCountries(list))
+          .then((list) => {
+            setListOfCountries(list)
+            setDisplayMessage("")
+          })
+          .catch(() => {
+            setDisplayMessage("Error fetching countries!!!")          
+          })
     }
-    else if(resultSearchList.length !== 1) {
-      console.log("seteando onlyCountry")
-      setOnlyCountry(null);
-    }
+    else if(resultSearchList.length !== 1) setOnlyCountry(null);
   }, [country]);
 
-  if (!listOfCountries) return null;
+  if (!listOfCountries) return <Message msg={displayMessage}/>;
 
   // Not-handling functions
   let resultSearchList = listOfCountries.filter(
@@ -29,16 +33,9 @@ const App = () => {
   );
 
   // State handling functions
-  const handleNameCountry = (e) => {
-    console.log("handleNameCountry()")
-    setCountry(e.target.value);
-  };
+  const handleNameCountry = (e) => setCountry(e.target.value);
 
   const fetchCountry = ({name}) => {
-    console.log(name)
-    console.log("fetchCountry()")
-    console.log("onlyCountry", onlyCountry)
-    
     countriesService
       .getCountry(name)
         .then(result => setOnlyCountry(result))
