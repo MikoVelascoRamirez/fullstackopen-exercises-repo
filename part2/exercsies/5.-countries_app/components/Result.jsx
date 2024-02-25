@@ -3,10 +3,9 @@ import Message from "./Message";
 import ListCountries from "./ListCountries";
 import Country from "./Country";
 
-const Result = ({ result, getCountry }) => {
-  console.log("paintResults()", typeof result);
-  return typeof result === "string" ? (
-    <Message msg={result} />
+const Result = ({ result, getCountryHandler }) => {
+  return typeof result?.msg === "string" ? (
+    <Message msg={result.msg} color={result.color} />
   ) : Array.isArray(result) ? (
     <ListCountries list={result} getCountry={getCountry} />
   ) : result instanceof Object ? (
