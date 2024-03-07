@@ -98,8 +98,8 @@ const App = () => {
     // console.log("response of confirm", msgToDelete)
     if(msgToDelete) {
       PhoneBook.deleteContact(id)
-        .then(response => {
-          if(response.statusText === 'OK'){
+        .then(response => {          
+          if(response.status === 200){
             const personsList = [...persons].filter((person) => person.id !== id);
             // console.log(persons, personsList)
             setPersons(personsList)
